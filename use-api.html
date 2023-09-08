@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Rest API CRUD</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header id="header" class="mt-4">
+        <div class="container bg-info">
+            <div class="row">
+                <div class="col-md-8 d-flex align-items-center">
+                    <h2 class="text-light">PHP REST API CRUD</h2>
+                </div>
+                <div class="col-md-4">
+                    <form action="">
+                        <div class="mb-3">
+                            <label for="search-form" class="form-label text-light fw-bold">Search</label>
+                            <input type="text" class="form-control" name="" id="search-form" aria-describedby="helpId"
+                                placeholder="Search Here">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="intro-section">
+        <div class="container bg-success">
+            <div class="row">
+                <div class="col-12">
+                    <form action="" class="d-flex align-items-center justify-content-between pt-3 pb-3 text-light">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name:</label>
+                            <input type="text" class="form-control" name="name" id="name" aria-describedby="name"
+                                placeholder="Name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="age" class="form-label">Age:</label>
+                            <input type="text" class="form-control" name="age" id="age" aria-describedby="age"
+                                placeholder="Age">
+                        </div>
+                        <div class="mb-3">
+                            <label for="city" class="form-label">City</label>
+                            <input type="text" class="form-control" name="city" id="city" aria-describedby="helpId"
+                                placeholder="City">
+                        </div>
+                        <button type="submit" class="btn btn-warning">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="load-data-table">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 p-0">
+
+                    <div class="table-responsive">
+                        <table class="table table-striped
+                    table-hover	
+                    table-borderless
+                    table-info
+                    align-middle">
+                            <thead class="">
+                                <caption>API CRUD</caption>
+                                <tr id="table-first-row">
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>City</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider" id="tbody">
+                                <!-- <tr class="table-primary">
+                                <td width="80px">1</td>
+                                <td>Shah jalal</td>
+                                <td>21</td>
+                                <td>Dhaka</td>
+                                <td width="80px">
+                                    <button type="button" class="btn btn-success edit-btn" id="edit-btn" data-bs-toggle="modal"
+                                        data-bs-target="#modalId">Edit
+                                    </button>
+                                </td>
+                                <td width="80px">
+                                    <button type="button" class="btn btn-danger" id="delete-btn">Delete
+                                    </button>
+                                </td>
+                            </tr> -->
+                            </tbody>
+                            <tfoot>
+
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Start Modal ========== -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalId" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitleId">Update/Edit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <form action="">
+                            <div class="mb-3">
+                                <label for="sname" class="form-label">Name</label>
+                                <input type="text" class="form-control" name="sname" id="sname"
+                                    aria-describedby="helpId" placeholder="Student Name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="sage" class="form-label">Age</label>
+                                <input type="text" class="form-control" name="sage" id="sage" aria-describedby="helpId"
+                                    placeholder="Age">
+                            </div>
+                            <div class="mb-3">
+                                <label for="scity" class="form-label">City</label>
+                                <input type="text" class="form-control" name="scity" id="scity"
+                                    aria-describedby="helpId" placeholder="City">
+                            </div>
+
+                            <input type="submit" class="btn btn-primary" value="Update">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="modal-save-btn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== End Modal ========== -->
+
+    <!-- <a class="btn btn-danger edit-btn" id="test-btn" href="#">Test Btn</a> -->
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+
+</html>

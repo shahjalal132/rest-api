@@ -4,9 +4,12 @@
 header( 'Content-Type: application/json' );
 header( 'Access-Control-Allow-Origin: *' );
 
-// Request accept from user
+// Request accept from user by json format
 $data       = json_decode( file_get_contents( "php://input" ), true );
 $student_id = $data['sid'];
+
+// Collect Search Request from Query Strings
+// $student_id = isset( $data['id'] ) ? $data['id'] : die();
 
 include "config.php";
 

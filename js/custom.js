@@ -32,7 +32,7 @@ $(document).ready(function () {
                     <td width="80px"><button type="button" class="btn btn-success edit-btn" id="${value.id}" data-bs-toggle="modal"
                     data-bs-target="#modalId">Edit
                     </button></td>
-                    <td width="80px"><button type="button" class="btn btn-danger" id="delete-btn">Delete
+                    <td width="80px"><button type="button" class="btn btn-danger delete-btn" id="${value.id}">Delete
                     </button></td>
                  </tr>`);
           });
@@ -50,13 +50,13 @@ $(document).ready(function () {
       $("#error-message").slideUp();
       setTimeout(function () {
         $("#success-message").slideUp();
-      }, 2000);
+      }, 4000);
     } else if (status == false) {
       $("#error-message").html(message).slideDown();
       $("#success-message").slideUp();
       setTimeout(function () {
         $("#error-message").slideUp();
-      }, 2000);
+      }, 4000);
     }
   }
 
@@ -148,5 +148,59 @@ $(document).ready(function () {
     }
   });
 
+  // Delete Record
+  $(document).on("click", ".delete-btn", function () {
+    if (confirm("Are you sure you want to delete?")) {
+      var delete_btn_id = $(this).attr("id");
+      var delete_btn_id_obj = { sid: delete_btn_id };
+      var delete_btn_json = JSON.stringify(delete_btn_id_obj);
+      var row = this;
+
+      $.ajax({
+        type: "POST",
+        url: "http://localhost/PHPP/REST%20API/api-delete.php",
+        data: delete_btn_json,
+        success: function (response) {
+          message(response.message, response.status);
+
+          if (response.status == true) {
+            $(row).closest("tr").fadeOut();
+          }
+        },
+      });
+    }
+  });
+
   // Live Search Record
+  $("#search-form").keyup(function () {
+    var search_val = $(this).val();
+    $("#tbody").html("");
+
+    $.ajax({
+      type: "GET",
+      url:
+        "http://localhost/PHPP/REST%20API/api-search.php?search=" + search_val,
+      success: function (response) {
+        if (response.status == false) {
+          $("#tbody").append(
+            `<tr><td colspan='6'><h2>${response.message}</h2></td></tr>`
+          );
+        } else {
+          $.each(response, function (indexInArray, value) {
+            $("#tbody").append(`<tr>
+                    <td>${value.id}</td>
+                    <td>${value.name}</td>
+                    <td>${value.age}</td>
+                    <td>${value.city}</td>
+                    <td width="80px"><button type="button" class="btn btn-success edit-btn" id="${value.id}" data-bs-toggle="modal"
+                    data-bs-target="#modalId">Edit
+                    </button></td>
+                    <td width="80px"><button type="button" class="btn btn-danger delete-btn" id="${value.id}">Delete
+                    </button></td>
+                 </tr>`);
+          });
+        }
+      },
+    });
+  });
 });

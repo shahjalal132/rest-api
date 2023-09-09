@@ -12,7 +12,7 @@ $student_id = $data['sid'];
 
 include "config.php";
 
-$sql = "DELETE * FROM students WHERE id = {$student_id}";
+$sql = "DELETE FROM students WHERE id = {$student_id}";
 
 if ( mysqli_query( $conn, $sql ) ) {
     echo json_encode( ['message' => 'Student Record Deleted', 'status' => true] );

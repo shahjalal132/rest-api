@@ -5,11 +5,11 @@ header( 'Content-Type: application/json' );
 header( 'Access-Control-Allow-Origin: *' );
 
 // Request accept from user by json format
-$data   = json_decode( file_get_contents( "php://input" ), true );
-$search = $data['search'];
+// $data   = json_decode( file_get_contents( "php://input" ), true );
+// $search = $data['search'];
 
 // Collect Search Request from Query Strings
-// $search = isset( $search['search'] ) ? $search['search'] : die( "Search Not Found" );
+$search = isset( $_GET['search'] ) ? $_GET['search'] : die( "Search Not Found" );
 
 include "config.php";
 

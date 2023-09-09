@@ -124,7 +124,11 @@
 
                 <div class="modal-body">
                     <div class="container-fluid">
-                        <form action="">
+                        <form id="modal-update-form">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="sid" id="sid" aria-describedby="helpId"
+                                    placeholder="Student ID" hidden>
+                            </div>
                             <div class="mb-3">
                                 <label for="sname" class="form-label">Name</label>
                                 <input type="text" class="form-control" name="sname" id="sname"
@@ -141,7 +145,7 @@
                                     aria-describedby="helpId" placeholder="City">
                             </div>
 
-                            <input type="submit" class="btn btn-primary" value="Update">
+                            <button type="submit" class="btn btn-primary" id="modal-update-button">Update</button>
                         </form>
                     </div>
                 </div>

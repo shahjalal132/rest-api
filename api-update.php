@@ -8,6 +8,7 @@ header( 'Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Cont
 
 // Request accept from user by json format
 $data = json_decode( file_get_contents( "php://input" ), true );
+
 $id   = $data['sid'];
 $name = $data['sname'];
 $age  = $data['sage'];
@@ -15,7 +16,7 @@ $city = $data['scity'];
 
 include "config.php";
 
-$sql = "UPDATE students name = '{$name}', age = {$age}, city = '{$city}' WHERE id = {$id}";
+$sql = "UPDATE students SET name = '{$name}', age = {$age}, city = '{$city}' WHERE id = {$id}";
 
 if ( mysqli_query( $conn, $sql ) ) {
     echo json_encode( ['message' => 'Student Record Updated', 'status' => true] );

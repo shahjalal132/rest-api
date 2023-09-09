@@ -89,6 +89,7 @@ $(document).ready(function () {
       url: "http://localhost/PHPP/REST%20API/api-fetch-single.php",
       data: myJSON,
       success: function (result) {
+        $("#sid").val(result[0].id);
         $("#sname").val(result[0].name);
         $("#sage").val(result[0].age);
         $("#scity").val(result[0].city);
@@ -122,6 +123,30 @@ $(document).ready(function () {
       });
     }
   });
+
   // Update Record
+  $("#modal-update-button").on("click", function (e) {
+    e.preventDefault();
+
+    var json_object = jsonData("#modal-update-form");
+
+    if (json_object == false) {
+      message("All fields are required", false);
+    } else {
+      $.ajax({
+        type: "PUT",
+        url: "http://localhost/PHPP/REST%20API/api-update.php",
+        data: json_object,
+        success: function (response) {
+          message(response.message, response.status);
+
+          if (response.status == true) {
+            loadTable();
+          }
+        },
+      });
+    }
+  });
+
   // Live Search Record
 });

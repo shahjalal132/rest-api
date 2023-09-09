@@ -42,6 +42,24 @@ $(document).ready(function () {
 
   loadTable();
 
+  //   Function JS array to JSON Data Convert
+  function jsonData(targetForm) {
+    let arr = $(targetForm).serializeArray();
+    let obj = {};
+
+    for (let a = 0; a < arr.length; a++) {
+      if (arr[a].value == "") {
+        return false;
+      } else {
+        obj[arr[a].name] = arr[a].value;
+      }
+    }
+
+    let json_string = JSON.stringify(obj);
+
+    return json_string;
+  }
+
   // Fetch Single Record
   $(document).on("click", ".edit-btn", function () {
     var studentID = $(this).attr("id");
@@ -61,6 +79,16 @@ $(document).ready(function () {
   });
 
   // Insert New Record
+  $("#save-btn").on("click", function (e) {
+    e.preventDefault();
+
+    let json_object = jsonData("#add-form-data");
+
+    if (json_object == false) {
+      alert("All field are required");
+    } else {
+    }
+  });
   // Update Record
   // Live Search Record
 });

@@ -34,7 +34,8 @@
         <div class="container bg-success">
             <div class="row">
                 <div class="col-12">
-                    <form action="" class="d-flex align-items-center justify-content-between pt-3 pb-3 text-light">
+                    <form id="add-form-data"
+                        class="d-flex align-items-center justify-content-between pt-3 pb-3 text-light">
                         <div class="mb-3">
                             <label for="name" class="form-label">Name:</label>
                             <input type="text" class="form-control" name="name" id="name" aria-describedby="name"
@@ -50,7 +51,7 @@
                             <input type="text" class="form-control" name="city" id="city" aria-describedby="helpId"
                                 placeholder="City">
                         </div>
-                        <button type="submit" class="btn btn-warning">Save</button>
+                        <button type="submit" class="btn btn-warning" id="save-btn">Save</button>
                     </form>
                 </div>
             </div>
@@ -144,7 +145,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="modal-save-btn">Save</button>
+                    <!-- <button type="button" class="btn btn-primary" id="modal-save-btn">Save</button> -->
                 </div>
             </div>
         </div>

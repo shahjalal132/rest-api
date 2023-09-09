@@ -13,6 +13,7 @@ modalId.addEventListener("show.bs.modal", function (event) {
 $(document).ready(function () {
   // Fetch All Records
   function loadTable() {
+    $("#tbody").html("");
     $.ajax({
       type: "GET",
       url: "http://localhost/PHPP/REST%20API/api-fetch-all.php",
@@ -42,10 +43,27 @@ $(document).ready(function () {
 
   loadTable();
 
+  // Success and Error message
+  function message(message, status) {
+    if (status == true) {
+      $("#success-message").html(message).slideDown();
+      $("#error-message").slideUp();
+      setTimeout(function () {
+        $("#success-message").slideUp();
+      }, 2000);
+    } else if (status == false) {
+      $("#error-message").html(message).slideDown();
+      $("#success-message").slideUp();
+      setTimeout(function () {
+        $("#error-message").slideUp();
+      }, 2000);
+    }
+  }
+
   //   Function JS array to JSON Data Convert
   function jsonData(targetForm) {
-    let arr = $(targetForm).serializeArray();
-    let obj = {};
+    var arr = $(targetForm).serializeArray();
+    var obj = {};
 
     for (let a = 0; a < arr.length; a++) {
       if (arr[a].value == "") {
@@ -55,7 +73,7 @@ $(document).ready(function () {
       }
     }
 
-    let json_string = JSON.stringify(obj);
+    var json_string = JSON.stringify(obj);
 
     return json_string;
   }
@@ -82,11 +100,26 @@ $(document).ready(function () {
   $("#save-btn").on("click", function (e) {
     e.preventDefault();
 
-    let json_object = jsonData("#add-form-data");
+    var json_object = jsonData("#add-form-data");
 
     if (json_object == false) {
-      alert("All field are required");
+      message("All fields are required", false);
     } else {
+      $.ajax({
+        type: "POST",
+        url: "http://localhost/PHPP/REST%20API/api-insert.php",
+        data: json_object,
+        dataType: "JSON",
+        success: function (response) {
+          message(response.message, response.status);
+
+          if (response.status == true) {
+            loadTable();
+
+            $("#add-form-data").trigger("reset");
+          }
+        },
+      });
     }
   });
   // Update Record

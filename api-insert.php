@@ -8,9 +8,9 @@ header( 'Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Cont
 
 // Request accept from user by json format
 $data = json_decode( file_get_contents( "php://input" ), true );
-$name = $data['sname'];
-$age  = $data['sage'];
-$city = $data['scity'];
+$name = $data['name'];
+$age  = $data['age'];
+$city = $data['city'];
 
 include "config.php";
 

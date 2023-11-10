@@ -16,7 +16,7 @@ $(document).ready(function () {
     $("#tbody").html("");
     $.ajax({
       type: "GET",
-      url: "http://localhost/PHPP/REST%20API/api-fetch-all.php",
+      url: "http://localhost/PHPP/REST-API/api-fetch-all.php",
       success: function (response) {
         if (response.status == false) {
           $("#tbody").append(
@@ -86,7 +86,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
-      url: "http://localhost/PHPP/REST%20API/api-fetch-single.php",
+      url: "http://localhost/PHPP/REST-API/api-fetch-single.php",
       data: myJSON,
       success: function (result) {
         $("#sid").val(result[0].id);
@@ -108,7 +108,7 @@ $(document).ready(function () {
     } else {
       $.ajax({
         type: "POST",
-        url: "http://localhost/PHPP/REST%20API/api-insert.php",
+        url: "http://localhost/PHPP/REST-API/api-insert.php",
         data: json_object,
         dataType: "JSON",
         success: function (response) {
@@ -135,7 +135,7 @@ $(document).ready(function () {
     } else {
       $.ajax({
         type: "PUT",
-        url: "http://localhost/PHPP/REST%20API/api-update.php",
+        url: "http://localhost/PHPP/REST-API/api-update.php",
         data: json_object,
         success: function (response) {
           message(response.message, response.status);
@@ -158,7 +158,7 @@ $(document).ready(function () {
 
       $.ajax({
         type: "POST",
-        url: "http://localhost/PHPP/REST%20API/api-delete.php",
+        url: "http://localhost/PHPP/REST-API/api-delete.php",
         data: delete_btn_json,
         success: function (response) {
           message(response.message, response.status);
@@ -179,7 +179,7 @@ $(document).ready(function () {
     $.ajax({
       type: "GET",
       url:
-        "http://localhost/PHPP/REST%20API/api-search.php?search=" + search_val,
+        "http://localhost/PHPP/REST-API/api-search.php?search=" + search_val,
       success: function (response) {
         if (response.status == false) {
           $("#tbody").append(
